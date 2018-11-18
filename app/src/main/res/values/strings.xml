@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidAssessment</string>
+    <string name="facebook_app_id">367819410629450</string>
+    <string name="fb_login_protocol_scheme">fb367819410629450</string>
+</resources>
