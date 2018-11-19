@@ -1,10 +1,12 @@
-package com.androidassessment;
+package com.androidassessment.movieviews;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.androidassessment.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -16,7 +18,7 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class FacebookLogin extends AppCompatActivity {
 
     private static final String EMAIL = "email";
     private CallbackManager callbackManager;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("onSuccess: ", loginResult.toString());
+                startActivity(new Intent(FacebookLogin.this, MovieActivity.class));
             }
 
             @Override
@@ -43,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException exception) {
-                Log.d("onError: ", exception.toString());
+                Toast.makeText(FacebookLogin.this,
+                        "Something went wrong pls try again later", Toast.LENGTH_LONG).show();
             }
         });
     }
